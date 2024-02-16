@@ -4,10 +4,13 @@ const https = require('https');
 const app = express();
 const PORT = 3000;
 
-let data = { message: "Hello, Banda" };
+let data = { message: "Welcome, AutoZone" };
 
 app.get('/', (req, res) => {
   res.json(data);
+});
+app.get('/healthz', (req, res) => {
+    res.status(200).send('OK');
 });
 
 // Load dummy certificates
