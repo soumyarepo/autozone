@@ -17,6 +17,14 @@ spec:
         image: soumyakube/simple-https-app:latest
         ports:
         - containerPort: 3000
+        volumeMounts:
+        - name: tls-certs
+          mountPath: /etc/ssl/certs
+          readOnly: true
+      volumes: 
+      - name: tls-certs
+        secret:
+          secretName: my-tls-secret
 ---
 apiVersion: v1
 kind: Service
